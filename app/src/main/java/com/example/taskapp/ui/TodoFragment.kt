@@ -71,6 +71,7 @@ class TodoFragment : Fragment() {
                     listEmpty(taskList ?: emptyList())
 
                     taskAdapter.submitList(taskList)
+
                 }
                 is StateView.OnError -> {
                     Toast.makeText(requireContext(), stateView.message, Toast.LENGTH_SHORT).show()
@@ -101,6 +102,8 @@ class TodoFragment : Fragment() {
                         taskAdapter.submitList(newList)
 
                         setPositionRecyclerView()
+
+                        listEmpty(newList)
 
                     }
 
@@ -177,6 +180,8 @@ class TodoFragment : Fragment() {
                         remove(stateView.data)
                     }
                     taskAdapter.submitList(newList)
+
+                    listEmpty(newList)
 
                 }
                 is StateView.OnError -> {
